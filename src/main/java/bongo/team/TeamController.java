@@ -15,7 +15,7 @@ public class TeamController {
     @PostMapping(path = "/teams")
     public @ResponseBody String addTeams(@RequestBody Team team) {
         teamService.addTeam(team);
-        return "Saved!";
+        return "Saved! " + team.getTeamName() + " has the id: " + team.getId();
     }
 
     @GetMapping(path = "/teams")
@@ -30,7 +30,8 @@ public class TeamController {
 
     @PutMapping(path = "/teams/{id}")
     public @ResponseBody String updateTeam(@PathVariable int id, @RequestBody Team team) {
-        teamService.updateTeam(id, team);
+        team.setId(id);
+        teamService.updateTeam(team);
         return "Updated!";
     }
 

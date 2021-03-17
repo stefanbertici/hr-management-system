@@ -4,14 +4,12 @@ package bongo.employee;
 
 import bongo.team.Team;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "first_name")
     private String firstName;
@@ -24,10 +22,10 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String firstName, String lastName) {
-        this.id = id;
+    public Employee(String firstName, String lastName, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.salary = salary;
     }
 
     public int getId() {

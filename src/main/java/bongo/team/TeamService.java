@@ -23,11 +23,8 @@ public class TeamService {
         return teamRepository.findById(id);
     }
 
-    public void updateTeam(int id, Team team) {
+    public void updateTeam(Team team) {
         teamRepository.save(team);
-        if (team.getId() != id) {
-            deleteTeam(id);
-        }
     }
 
     public void deleteTeam(int id) {
