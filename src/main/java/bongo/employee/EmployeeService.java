@@ -26,11 +26,8 @@ public class EmployeeService {
         return employeeRepository.findById(id);
     }
 
-    public void updateEmployee(int id, Employee employee) {
+    public void updateEmployee(Employee employee) {
         employeeRepository.save(employee);
-        if (employee.getId() != id) {
-            deleteEmployee(id);
-        }
     }
 
     public void deleteEmployee(int id) {

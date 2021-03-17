@@ -15,6 +15,7 @@ public class Employee {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    private Role role;
     private int salary;
     @ManyToOne
     private Team team;
@@ -22,9 +23,10 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, int salary) {
+    public Employee(String firstName, String lastName, Role role, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.role = role;
         this.salary = salary;
     }
 
@@ -50,6 +52,14 @@ public class Employee {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public int getSalary() {

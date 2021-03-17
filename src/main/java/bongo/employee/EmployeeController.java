@@ -37,8 +37,10 @@ public class EmployeeController {
 
     @PutMapping(path = "/teams/{teamId}/employees/{id}")
     public @ResponseBody String updateEmployee(@PathVariable int teamId, @PathVariable int id, @RequestBody Employee employee) {
-        employee.setTeam(new Team(teamId));
-        employeeService.updateEmployee(id, employee);
+        Team team = new Team(teamId);
+        employee.setTeam(team);
+        employee.setId(id);
+        employeeService.updateEmployee(employee);
         return "Updated!";
     }
 
