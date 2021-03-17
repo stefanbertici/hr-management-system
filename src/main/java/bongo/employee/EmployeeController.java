@@ -14,39 +14,39 @@ public class EmployeeController {
     bongo.employee.EmployeeService employeeService;
 
     @PostMapping(path = "/teams/{id}/employees")
-    public @ResponseBody String addEmployee(@PathVariable int id, @RequestBody Employee employee) {
+    public @ResponseBody String add(@PathVariable int id, @RequestBody Employee employee) {
         employee.setTeam(new Team(id));
-        employeeService.addEmployee(employee);
+        employeeService.add(employee);
         return "Saved!";
     }
 
     @GetMapping(path = "/employees")
-    public @ResponseBody Iterable<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    public @ResponseBody Iterable<Employee> getAll() {
+        return employeeService.getAll();
     }
 
     @GetMapping(path = "employees/{id}")
-    public @ResponseBody Optional<Employee> getEmployee(@PathVariable int id) {
-        return employeeService.getEmployee(id);
+    public @ResponseBody Optional<Employee> get(@PathVariable int id) {
+        return employeeService.get(id);
     }
 
     @GetMapping(path = "/teams/{id}/employees")
-    public @ResponseBody Iterable<Employee> getAllEmployees(@PathVariable int id) {
-        return employeeService.getAllEmployees(id);
+    public @ResponseBody Iterable<Employee> getAllOfTeam(@PathVariable int id) {
+        return employeeService.getAllByTeamId(id);
     }
 
     @PutMapping(path = "/teams/{teamId}/employees/{id}")
-    public @ResponseBody String updateEmployee(@PathVariable int teamId, @PathVariable int id, @RequestBody Employee employee) {
+    public @ResponseBody String update(@PathVariable int teamId, @PathVariable int id, @RequestBody Employee employee) {
         Team team = new Team(teamId);
         employee.setTeam(team);
         employee.setId(id);
-        employeeService.updateEmployee(employee);
+        employeeService.update(employee);
         return "Updated!";
     }
 
     @DeleteMapping(path = "employees/{id}")
-    public @ResponseBody String deleteEmployee(@PathVariable int id) {
-        employeeService.deleteEmployee(id);
+    public @ResponseBody String delete(@PathVariable int id) {
+        employeeService.delete(id);
         return "Deleted!";
     }
 }

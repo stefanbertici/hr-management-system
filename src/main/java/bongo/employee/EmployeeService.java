@@ -11,26 +11,26 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public void addEmployee(Employee employee) {
+    public void add(Employee employee) {
         employeeRepository.save(employee);
     }
 
-    public Iterable<Employee> getAllEmployees() {
+    public Iterable<Employee> getAll() {
         return employeeRepository.findAll();
     }
-    public Iterable<Employee> getAllEmployees(int id) {
+    public Iterable<Employee> getAllByTeamId(int id) {
         return employeeRepository.findByTeamId(id);
     }
 
-    public Optional<Employee> getEmployee(int id) {
+    public Optional<Employee> get(int id) {
         return employeeRepository.findById(id);
     }
 
-    public void updateEmployee(Employee employee) {
+    public void update(Employee employee) {
         employeeRepository.save(employee);
     }
 
-    public void deleteEmployee(int id) {
+    public void delete(int id) {
         employeeRepository.deleteById(id);
     }
 }

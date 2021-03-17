@@ -9,25 +9,25 @@ import java.util.Optional;
 public class TeamService {
 
     @Autowired
-    bongo.team.TeamRepository teamRepository;
+    TeamRepository teamRepository;
 
-    public void addTeam(Team team) {
+    public void add(Team team) {
         teamRepository.save(team);
     }
 
-    public Iterable<Team> getAllTeams() {
+    public Iterable<Team> getAll() {
         return teamRepository.findAll();
     }
 
-    public Optional<Team> getTeam(int id) {
+    public Optional<Team> get(int id) {
         return teamRepository.findById(id);
     }
 
-    public void updateTeam(Team team) {
+    public void update(Team team) {
         teamRepository.save(team);
     }
 
-    public void deleteTeam(int id) {
+    public void delete(int id) {
         teamRepository.deleteById(id);
     }
 }

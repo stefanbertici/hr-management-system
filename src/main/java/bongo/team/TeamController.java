@@ -13,31 +13,31 @@ public class TeamController {
     TeamService teamService;
 
     @PostMapping(path = "/teams")
-    public @ResponseBody String addTeams(@RequestBody Team team) {
-        teamService.addTeam(team);
+    public @ResponseBody String add(@RequestBody Team team) {
+        teamService.add(team);
         return "Saved! " + team.getTeamName() + " has the id: " + team.getId();
     }
 
     @GetMapping(path = "/teams")
-    public @ResponseBody Iterable<Team> getAllTeams() {
-        return teamService.getAllTeams();
+    public @ResponseBody Iterable<Team> getAll() {
+        return teamService.getAll();
     }
 
     @GetMapping(path = "/teams/{id}")
-    public @ResponseBody Optional<Team> getTeam(@PathVariable int id) {
-        return teamService.getTeam(id);
+    public @ResponseBody Optional<Team> get(@PathVariable int id) {
+        return teamService.get(id);
     }
 
     @PutMapping(path = "/teams/{id}")
-    public @ResponseBody String updateTeam(@PathVariable int id, @RequestBody Team team) {
+    public @ResponseBody String update(@PathVariable int id, @RequestBody Team team) {
         team.setId(id);
-        teamService.updateTeam(team);
+        teamService.update(team);
         return "Updated!";
     }
 
     @DeleteMapping(path = "/teams/{id}")
-    public @ResponseBody String deleteTeam(@PathVariable int id) {
-        teamService.deleteTeam(id);
+    public @ResponseBody String delete(@PathVariable int id) {
+        teamService.delete(id);
         return "Deleted!";
     }
 }
