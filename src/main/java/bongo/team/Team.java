@@ -1,7 +1,5 @@
 package bongo.team;
 
-import bongo.employee.Employee;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +8,7 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "team_name")
-    private String teamName;
+    private String name;
 //    @ManyToOne
 //    private Employee manager;
 
@@ -20,16 +18,16 @@ public class Team {
 
     public Team(int id) {
         this.id = id;
-        this.teamName = "";
+        this.name = "";
         //this.manager = null;
     }
 
-    public String getTeamName() {
-        return teamName;
+    public String getName() {
+        return name;
     }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {

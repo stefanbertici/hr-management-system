@@ -3,6 +3,7 @@ package bongo.employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,12 +16,7 @@ public class EmployeeService {
         employeeRepository.save(employee);
     }
 
-    public Iterable<Employee> getAll() {
-        return employeeRepository.findAll();
-    }
-    public Iterable<Employee> getAllByTeamId(int id) {
-        return employeeRepository.findByTeamId(id);
-    }
+    public List<Employee> getAll() { return (List<Employee>)employeeRepository.findAll(); }
 
     public Optional<Employee> get(int id) {
         return employeeRepository.findById(id);
