@@ -27,11 +27,6 @@ public class Main {
 		dbSeeder.seedEmployeeTable();
 	}
 
-//	@Bean
-//	public DatabaseSeeder seeder() {
-//		return new DatabaseSeeder();
-//	}
-
 	@Bean
 	public GroupedOpenApi singleApi() {
 		return GroupedOpenApi.builder()
