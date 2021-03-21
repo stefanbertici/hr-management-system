@@ -6,9 +6,14 @@ import bongo.employee.Role;
 import bongo.team.Team;
 import bongo.team.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.logging.Logger;
 
+@Configurable
 public class DatabaseSeeder {
 
     @Autowired
@@ -41,7 +46,7 @@ public class DatabaseSeeder {
             employee.setRole(Role.ADMIN);
             employee.setSalary(9999);
             Team team = new Team();
-            team.setId(1);
+            team.setId(15);
             employee.setTeam(team);
             employeeService.add(employee);
             logger.info("Admin employee seeded");

@@ -1,12 +1,15 @@
 package bongo;
 
+import bongo.employee.EmployeeService;
 import bongo.seeder.DatabaseSeeder;
 import bongo.team.Team;
 import bongo.team.TeamService;
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import org.hibernate.dialect.Database;
 import org.springdoc.core.GroupedOpenApi;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -20,11 +23,18 @@ public class Main {
 		SpringApplication.run(Main.class, args);
 	}
 
+	@Autowired DatabaseSeeder dbSeeder;
+
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
-		DatabaseSeeder dbSeeder = new DatabaseSeeder();
+//		DatabaseSeeder dbSeeder = new DatabaseSeeder();
 		dbSeeder.seedTeamTable();
 		dbSeeder.seedEmployeeTable();
+	}
+
+	@Bean
+	public DatabaseSeeder seeder() {
+		return new DatabaseSeeder();
 	}
 
 	@Bean
