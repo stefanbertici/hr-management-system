@@ -33,15 +33,6 @@ public class TeamService {
         return teamRepository.findById(id);
     }
 
-    public List<Employee> getAllMembers(int id) {
-        throw new NotImplementedException();
-//        how to use this
-//        TypedQuery<Employee> query = em.createQuery("select e from Team t join Employee e on e.team_id = t.id where t.id = ?1", Employee.class);
-//        query.setParameter(1, id);
-//
-//        return query.getResultList();
-    }
-
     @Transactional()
     public void add(Team team) {
         teamRepository.save(team);

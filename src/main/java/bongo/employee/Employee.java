@@ -1,9 +1,5 @@
 package bongo.employee;
 
-
-
-import bongo.team.Team;
-
 import javax.persistence.*;
 
 @Entity
@@ -17,8 +13,6 @@ public class Employee {
     private String lastName;
     private Role role;
     private int salary;
-    @ManyToOne
-    private Team team;
 
     public Employee() {
         this.firstName = "";
@@ -72,13 +66,5 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
     }
 }

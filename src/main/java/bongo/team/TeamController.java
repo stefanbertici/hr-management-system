@@ -1,6 +1,5 @@
 package bongo.team;
 
-import bongo.employee.Employee;
 import bongo.team.models.AddModel;
 import bongo.team.models.UpdateModel;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,12 +28,6 @@ public class TeamController {
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody Optional<Team> get(@PathVariable int id) {
         return teamService.get(id);
-    }
-
-    @Operation(operationId = "teams_getMembers", description = "Returns a list of employees belonging to the team")
-    @GetMapping(path = "/{id}/employees", produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Employee> getMembers(@PathVariable int id) {
-        return teamService.getAllMembers(id);
     }
 
     @Operation(operationId = "teams_add", description = "Adds a team to the system")

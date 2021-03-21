@@ -42,9 +42,6 @@ public class DatabaseSeeder {
             employee.setLastName("Yumi");
             employee.setRole(Role.ADMIN);
             employee.setSalary(9999);
-            Team team = new Team();
-            team.setId(15);
-            employee.setTeam(team);
             employeeService.add(employee);
             logger.info("Admin employee seeded");
         } else {
