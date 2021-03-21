@@ -12,11 +12,17 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    public boolean isEmpty() {
+        return employeeRepository.count() == 0L;
+    }
+
     public void add(Employee employee) {
         employeeRepository.save(employee);
     }
 
-    public List<Employee> getAll() { return (List<Employee>)employeeRepository.findAll(); }
+    public List<Employee> getAll() {
+        return (List<Employee>)employeeRepository.findAll();
+    }
 
     public Optional<Employee> get(int id) {
         return employeeRepository.findById(id);

@@ -21,6 +21,10 @@ public class TeamService {
     @Autowired
     TeamRepository teamRepository;
 
+    public boolean isEmpty() {
+        return teamRepository.count() == 0L;
+    }
+
     public List<Team> getAll() {
         return (List<Team>)teamRepository.findAll();
     }
