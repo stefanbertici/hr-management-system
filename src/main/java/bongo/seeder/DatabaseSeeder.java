@@ -15,6 +15,7 @@ public class DatabaseSeeder {
 
     @Autowired
     TeamService teamService;
+
     @Autowired
     EmployeeService employeeService;
 
@@ -43,7 +44,7 @@ public class DatabaseSeeder {
             employee.setRole(Role.ADMIN);
             employee.setSalary(9999);
             Team team = new Team();
-            team.setId(15);
+            team.setId(1);
             employee.setTeam(team);
             employeeService.add(employee);
             logger.info("Admin employee seeded");
