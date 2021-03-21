@@ -1,6 +1,8 @@
 package bongo.team;
 
 import bongo.employee.Employee;
+import bongo.team.models.AddModel;
+import bongo.team.models.UpdateModel;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,15 +39,19 @@ public class TeamController {
 
     @Operation(operationId = "teams_add", description = "Adds a team to the system")
     @PostMapping(path = "/", produces = MediaType.TEXT_PLAIN_VALUE)
-    public @ResponseBody String add(@RequestBody Team team) {
+    public @ResponseBody String add(@RequestBody AddModel model) {
+        Team team = new Team();
+        team.setName(model.getName());
         teamService.add(team);
         return "Saved! " + team.getName() + " has the id: " + team.getId();
     }
 
     @Operation(operationId = "teams_update", description = "Updates a team with given information")
     @PutMapping(path = "/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
-    public @ResponseBody String update(@PathVariable int id, @RequestBody Team team) {
+    public @ResponseBody String update(@PathVariable int id, @RequestBody UpdateModel model) {
+        Team team = new Team();
         team.setId(id);
+        team.setName(model.getName());
         teamService.update(team);
         return "Updated!";
     }
