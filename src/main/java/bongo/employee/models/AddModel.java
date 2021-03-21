@@ -1,45 +1,18 @@
-package bongo.employee;
+package bongo.employee.models;
 
+import bongo.employee.Role;
 
-
-import bongo.team.Team;
-
-import javax.persistence.*;
-
-@Entity
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "first_name")
+public class AddModel {
     private String firstName;
-    @Column(name = "last_name")
     private String lastName;
     private Role role;
     private int salary;
-    @ManyToOne
-    private Team team;
 
-    public Employee() {
-        this.firstName = "";
-        this.lastName = "";
-        this.role = Role.EMPLOYEE;
-        this.salary = -1;
-    }
-
-    public Employee(String firstName, String lastName, Role role, int salary) {
+    public AddModel(String firstName, String lastName, Role role, int salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
         this.salary = salary;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -72,13 +45,5 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
     }
 }

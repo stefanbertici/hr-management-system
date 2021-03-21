@@ -1,5 +1,7 @@
 package bongo.employee;
 
+import bongo.employee.models.AddModel;
+import bongo.employee.models.UpdateModel;
 import bongo.team.Team;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,12 @@ public class EmployeeController {
 
     @Operation(operationId = "employees_add", description = "Adds an employee to the system")
     @PostMapping(path = "/teams/{id}/employees", produces = MediaType.TEXT_PLAIN_VALUE)
-    public @ResponseBody String add(@PathVariable int id, @RequestBody Employee employee) {
+    public @ResponseBody String add(@PathVariable int id, @RequestBody AddModel model) {
+        Employee employee = new Employee();
+        employee.setFirstName(model.getFirstName());
+        employee.setLastName(model.getLastName());
+        employee.setRole(model.getRole());
+        employee.setSalary(model.getSalary());
         employee.setTeam(new Team(id));
         employeeService.add(employee);
         return "Saved!";
@@ -37,9 +44,13 @@ public class EmployeeController {
 
     @Operation(operationId = "employees_update", description = "Updates an employee with given information")
     @PutMapping(path = "/teams/{teamId}/employees/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
-    public @ResponseBody String update(@PathVariable int teamId, @PathVariable int id, @RequestBody Employee employee) {
-        Team team = new Team(teamId);
-        employee.setTeam(team);
+    public @ResponseBody String update(@PathVariable int teamId, @PathVariable int id, @RequestBody UpdateModel model) {
+        Employee employee = new Employee();
+        employee.setFirstName(model.getFirstName());
+        employee.setLastName(model.getLastName());
+        employee.setRole(model.getRole());
+        employee.setSalary(model.getSalary());
+        employee.setTeam(new Team(id));
         employee.setId(id);
         employeeService.update(employee);
         return "Updated!";

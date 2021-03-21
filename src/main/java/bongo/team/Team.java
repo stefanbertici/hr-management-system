@@ -14,6 +14,7 @@ public class Team {
 
 
     public Team() {
+        this.name = "";
     }
 
     public Team(int id) {
