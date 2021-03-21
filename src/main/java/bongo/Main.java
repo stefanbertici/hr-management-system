@@ -19,7 +19,8 @@ public class Main {
 		SpringApplication.run(Main.class, args);
 	}
 
-	@Autowired DatabaseSeeder dbSeeder;
+	@Autowired
+	DatabaseSeeder dbSeeder;
 
 	@EventListener
 	public void seed(ContextRefreshedEvent event) {
